@@ -1,0 +1,739 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "https://management.azure.com/"
+        }
+    ],
+    "info": {
+        "description": "The Azure Storage Management API.",
+        "title": "StorageManagementClient",
+        "version": "2018-03-01-preview",
+        "x-apisguru-categories": [
+            "cloud"
+        ],
+        "x-logo": {
+            "url": "https://api.apis.guru/v2/cache/logo/https_assets.onestore.ms_cdnfiles_onestorerolling-1606-01000_shell_v3_images_logo_microsoft.png"
+        },
+        "x-origin": [
+            {
+                "format": "swagger",
+                "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview/managementpolicy.json",
+                "version": "2.0"
+            }
+        ],
+        "x-preferred": true,
+        "x-providerName": "azure.com",
+        "x-serviceName": "storage-managementpolicy",
+        "x-tags": [
+            "Azure",
+            "Microsoft"
+        ]
+    },
+    "security": [
+        {
+            "azure_auth": [
+                "user_impersonation"
+            ]
+        }
+    ],
+    "paths": {
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}": {
+            "delete": {
+                "description": "Deletes the data policy rules associated with the specified storage account.",
+                "operationId": "ManagementPolicies_Delete",
+                "parameters": [
+                    {
+                        "description": "The name of the resource group within the user's subscription. The name is case insensitive.",
+                        "in": "path",
+                        "name": "resourceGroupName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 90,
+                            "pattern": "^[-\\w\\._\\(\\)]+$"
+                        }
+                    },
+                    {
+                        "description": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
+                        "in": "path",
+                        "name": "accountName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 24
+                        }
+                    },
+                    {
+                        "description": "The API version to use for this operation.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The ID of the target subscription.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The name of the Storage Account Management Policy. It should always be 'default'",
+                        "in": "path",
+                        "name": "managementPolicyName",
+                        "required": true,
+                        "x-ms-enum": {
+                            "modelAsString": true,
+                            "name": "ManagementPolicyName"
+                        },
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "default"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK -- Delete management policies successfully."
+                    },
+                    "204": {
+                        "description": "No Content -- The management policies does not exist."
+                    }
+                },
+                "tags": [
+                    "ManagementPolicies"
+                ],
+                "x-ms-examples": {
+                    "StorageAccountDeleteManagementPolicies": {
+                        "parameters": {
+                            "accountName": "sto2527",
+                            "api-version": "2018-03-01-preview",
+                            "managementPolicyName": "default",
+                            "monitor": "true",
+                            "resourceGroupName": "res6977",
+                            "subscriptionId": "{subscription-id}"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": ""
+                            },
+                            "204": {
+                                "body": ""
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "description": "Gets the data policy rules associated with the specified storage account.",
+                "operationId": "ManagementPolicies_Get",
+                "parameters": [
+                    {
+                        "description": "The name of the resource group within the user's subscription. The name is case insensitive.",
+                        "in": "path",
+                        "name": "resourceGroupName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 90,
+                            "pattern": "^[-\\w\\._\\(\\)]+$"
+                        }
+                    },
+                    {
+                        "description": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
+                        "in": "path",
+                        "name": "accountName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 24
+                        }
+                    },
+                    {
+                        "description": "The API version to use for this operation.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The ID of the target subscription.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The name of the Storage Account Management Policy. It should always be 'default'",
+                        "in": "path",
+                        "name": "managementPolicyName",
+                        "required": true,
+                        "x-ms-enum": {
+                            "modelAsString": true,
+                            "name": "ManagementPolicyName"
+                        },
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "default"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK -- Get management policies successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "description": "The name of the resource",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "description": "The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "x-ms-azure-resource": true,
+                                            "type": "object"
+                                        }
+                                    ],
+                                    "description": "The Get Storage Account ManagementPolicies operation response.",
+                                    "properties": {
+                                        "properties": {
+                                            "description": "Returns the Storage Account Data Policies Rules.",
+                                            "readOnly": true,
+                                            "x-ms-client-flatten": true,
+                                            "allOf": [
+                                                {
+                                                    "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                                    "properties": {
+                                                        "policy": {
+                                                            "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            ],
+                                            "properties": {
+                                                "lastModifiedTime": {
+                                                    "description": "Returns the date and time the ManagementPolicies was last modified.",
+                                                    "format": "date-time",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ManagementPolicies"
+                ],
+                "x-ms-examples": {
+                    "StorageAccountGetManagementPolicies": {
+                        "parameters": {
+                            "accountName": "sto2527",
+                            "api-version": "2018-03-01-preview",
+                            "managementPolicyName": "default",
+                            "monitor": "true",
+                            "resourceGroupName": "res6977",
+                            "subscriptionId": "{subscription-id}"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "id": "/subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Storage/storageAccounts/sto288/managementPolicies/default",
+                                    "name": "DefaultManagementPolicy",
+                                    "properties": {
+                                        "lastModifiedTime": "2018-06-08T03:01:55.7168089Z",
+                                        "policy": {
+                                            "rules": [
+                                                {
+                                                    "definition": {
+                                                        "actions": {
+                                                            "baseBlob": {
+                                                                "delete": {
+                                                                    "daysAfterModificationGreaterThan": 1000
+                                                                },
+                                                                "tierToArchive": {
+                                                                    "daysAfterModificationGreaterThan": 90
+                                                                },
+                                                                "tierToCool": {
+                                                                    "daysAfterModificationGreaterThan": 30
+                                                                }
+                                                            },
+                                                            "snapshot": {
+                                                                "delete": {
+                                                                    "daysAfterCreationGreaterThan": 30
+                                                                }
+                                                            }
+                                                        },
+                                                        "filters": {
+                                                            "blobTypes": [
+                                                                "blockBlob"
+                                                            ],
+                                                            "prefixMatch": [
+                                                                "olcmtestcontainer"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "name": "olcmtest",
+                                                    "type": "Lifecycle"
+                                                }
+                                            ],
+                                            "version": "0.5"
+                                        }
+                                    },
+                                    "type": "Microsoft.Storage/storageAccounts/managementPolicies"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Sets the data policy rules associated with the specified storage account.",
+                "operationId": "ManagementPolicies_CreateOrUpdate",
+                "parameters": [
+                    {
+                        "description": "The name of the resource group within the user's subscription. The name is case insensitive.",
+                        "in": "path",
+                        "name": "resourceGroupName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 90,
+                            "pattern": "^[-\\w\\._\\(\\)]+$"
+                        }
+                    },
+                    {
+                        "description": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
+                        "in": "path",
+                        "name": "accountName",
+                        "required": true,
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 24
+                        }
+                    },
+                    {
+                        "description": "The API version to use for this operation.",
+                        "in": "query",
+                        "name": "api-version",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The ID of the target subscription.",
+                        "in": "path",
+                        "name": "subscriptionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    {
+                        "description": "The name of the Storage Account Management Policy. It should always be 'default'",
+                        "in": "path",
+                        "name": "managementPolicyName",
+                        "required": true,
+                        "x-ms-enum": {
+                            "modelAsString": true,
+                            "name": "ManagementPolicyName"
+                        },
+                        "x-ms-parameter-location": "method",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "default"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK -- Get management policies successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "description": "The name of the resource",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "description": "The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "x-ms-azure-resource": true,
+                                            "type": "object"
+                                        }
+                                    ],
+                                    "description": "The Get Storage Account ManagementPolicies operation response.",
+                                    "properties": {
+                                        "properties": {
+                                            "description": "Returns the Storage Account Data Policies Rules.",
+                                            "readOnly": true,
+                                            "x-ms-client-flatten": true,
+                                            "allOf": [
+                                                {
+                                                    "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                                    "properties": {
+                                                        "policy": {
+                                                            "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            ],
+                                            "properties": {
+                                                "lastModifiedTime": {
+                                                    "description": "Returns the date and time the ManagementPolicies was last modified.",
+                                                    "format": "date-time",
+                                                    "readOnly": true,
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ManagementPolicies"
+                ],
+                "x-ms-examples": {
+                    "StorageAccountSetManagementPolicies": {
+                        "parameters": {
+                            "accountName": "sto9699",
+                            "api-version": "2018-03-01-preview",
+                            "managementPolicyName": "default",
+                            "monitor": "true",
+                            "properties": {
+                                "properties": {
+                                    "policy": {
+                                        "rules": [
+                                            {
+                                                "definition": {
+                                                    "actions": {
+                                                        "baseBlob": {
+                                                            "delete": {
+                                                                "daysAfterModificationGreaterThan": 1000
+                                                            },
+                                                            "tierToArchive": {
+                                                                "daysAfterModificationGreaterThan": 90
+                                                            },
+                                                            "tierToCool": {
+                                                                "daysAfterModificationGreaterThan": 30
+                                                            }
+                                                        },
+                                                        "snapshot": {
+                                                            "delete": {
+                                                                "daysAfterCreationGreaterThan": 30
+                                                            }
+                                                        }
+                                                    },
+                                                    "filters": {
+                                                        "blobTypes": [
+                                                            "blockBlob"
+                                                        ],
+                                                        "prefixMatch": [
+                                                            "olcmtestcontainer"
+                                                        ]
+                                                    }
+                                                },
+                                                "name": "olcmtest",
+                                                "type": "Lifecycle"
+                                            }
+                                        ],
+                                        "version": "0.5"
+                                    }
+                                }
+                            },
+                            "resourceGroupName": "res7687",
+                            "subscriptionId": "{subscription-id}"
+                        },
+                        "responses": {
+                            "200": {
+                                "body": {
+                                    "id": "/subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Storage/storageAccounts/sto288/managementPolicies/default",
+                                    "name": "DefaultManagementPolicy",
+                                    "properties": {
+                                        "lastModifiedTime": "2018-06-08T02:53:39.0932539Z",
+                                        "policy": {
+                                            "rules": [
+                                                {
+                                                    "definition": {
+                                                        "actions": {
+                                                            "baseBlob": {
+                                                                "delete": {
+                                                                    "daysAfterModificationGreaterThan": 1000
+                                                                },
+                                                                "tierToArchive": {
+                                                                    "daysAfterModificationGreaterThan": 90
+                                                                },
+                                                                "tierToCool": {
+                                                                    "daysAfterModificationGreaterThan": 30
+                                                                }
+                                                            },
+                                                            "snapshot": {
+                                                                "delete": {
+                                                                    "daysAfterCreationGreaterThan": 30
+                                                                }
+                                                            }
+                                                        },
+                                                        "filters": {
+                                                            "blobTypes": [
+                                                                "blockBlob"
+                                                            ],
+                                                            "prefixMatch": [
+                                                                "olcmtestcontainer"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "name": "olcmtest",
+                                                    "type": "Lifecycle"
+                                                }
+                                            ],
+                                            "version": "0.5"
+                                        }
+                                    },
+                                    "type": "Microsoft.Storage/storageAccounts/managementPolicies"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                "properties": {
+                                    "properties": {
+                                        "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                        "x-ms-client-flatten": true,
+                                        "properties": {
+                                            "policy": {
+                                                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                                "type": "object"
+                                            }
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    },
+                    "description": "The data policy rules to set to a storage account.",
+                    "required": true
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ManagementPoliciesRules": {
+                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                "properties": {
+                    "policy": {
+                        "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ManagementPoliciesRulesSetParameter": {
+                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                "properties": {
+                    "properties": {
+                        "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                        "x-ms-client-flatten": true,
+                        "properties": {
+                            "policy": {
+                                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "StorageAccountManagementPolicies": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "id": {
+                                "description": "Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+                                "readOnly": true,
+                                "type": "string"
+                            },
+                            "name": {
+                                "description": "The name of the resource",
+                                "readOnly": true,
+                                "type": "string"
+                            },
+                            "type": {
+                                "description": "The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+                                "readOnly": true,
+                                "type": "string"
+                            }
+                        },
+                        "x-ms-azure-resource": true,
+                        "type": "object"
+                    }
+                ],
+                "description": "The Get Storage Account ManagementPolicies operation response.",
+                "properties": {
+                    "properties": {
+                        "description": "Returns the Storage Account Data Policies Rules.",
+                        "readOnly": true,
+                        "x-ms-client-flatten": true,
+                        "allOf": [
+                            {
+                                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                "properties": {
+                                    "policy": {
+                                        "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        ],
+                        "properties": {
+                            "lastModifiedTime": {
+                                "description": "Returns the date and time the ManagementPolicies was last modified.",
+                                "format": "date-time",
+                                "readOnly": true,
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "StorageAccountManagementPoliciesRulesProperty": {
+                "allOf": [
+                    {
+                        "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                        "properties": {
+                            "policy": {
+                                "description": "The Storage Account ManagementPolicies Rules, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ],
+                "description": "The Storage Account Data Policies properties.",
+                "properties": {
+                    "lastModifiedTime": {
+                        "description": "Returns the date and time the ManagementPolicies was last modified.",
+                        "format": "date-time",
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "ManagementPolicyName": {
+                "description": "The name of the Storage Account Management Policy. It should always be 'default'",
+                "in": "path",
+                "name": "managementPolicyName",
+                "required": true,
+                "x-ms-enum": {
+                    "modelAsString": true,
+                    "name": "ManagementPolicyName"
+                },
+                "x-ms-parameter-location": "method",
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "default"
+                    ]
+                }
+            }
+        },
+        "securitySchemes": {
+            "azure_auth": {
+                "description": "Azure Active Directory OAuth2 Flow",
+                "type": "oauth2",
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+                        "scopes": {
+                            "user_impersonation": "impersonate your user account"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
