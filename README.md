@@ -5,7 +5,7 @@
 A generated **flow**ground connector for the StorageManagementClient API (version 2018-03-01-preview).
 
 Generated from: https://api.apis.guru/v2/specs/azure.com/storage-managementpolicy/2018-03-01-preview/swagger.json<br/>
-Generated at: 2019-05-07T17:39:16+03:00
+Generated at: 2019-06-11T18:14:31+03:00
 
 ## API Description
 
